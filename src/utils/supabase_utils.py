@@ -26,9 +26,9 @@ logger = setup_logger()
 # Load environment variables
 load_dotenv()
 
-SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_SECRET_KEY")
-SUPABASE_BUCKET = os.getenv("SUPABASE_BUCKET")
+SUPABASE_URL = os.getenv("SUPABASE_NONPROD_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_NONPROD_SECRET_KEY")
+SUPABASE_BUCKET = os.getenv("SUPABASE_NONPROD_BUCKET")
 
 # Check if the values obtained are valid
 if not all([SUPABASE_URL, SUPABASE_KEY, SUPABASE_BUCKET]):
