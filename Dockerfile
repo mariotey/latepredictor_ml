@@ -1,34 +1,22 @@
 FROM python:3.11
 
-# Set working directory inside container
-# All subsequent commands run from /app
 WORKDIR /app
 
-# Install uv (modern Python package/dependency manager)
-# Used to install dependencies from pyproject.toml + uv.lock
+# Install uv
 RUN pip install --no-cache-dir uv
 
-# Copy dependency definition files first (enables Docker layer caching)
-# This means dependencies are only reinstalled when these files change
+# Copy only dependency files first (for caching)
 COPY pyproject.toml uv.lock ./
 
-# Ensure uv creates the virtual environment inside /app/.venv
-# This makes environment predictable inside Docker
+# Install dependencies into the container environment
 ENV UV_PROJECT_ENVIRONMENT=/app/.venv
-
-# Install all dependencies locked in uv.lock
-# --frozen ensures exact reproducible installs (no version changes)
 RUN uv sync --frozen
 
-# Copy the rest of the application code into the container
+# Copy application code
 COPY . .
 
-# Ensure Python can import modules from /app/src
+# Ensure correct import path (only needed if using /src layout)
 ENV PYTHONPATH=/app/src
 
-# Expose the port FastAPI will run on inside the container
-EXPOSE 10000
-
-# Start the FastAPI application using uv-managed environment
-# uv run ensures correct venv + dependencies are used
-CMD ["uv", "run", "uvicorn", "fastapi_app.main:app", "--host", "0.0.0.0", "--port", "10000"]
+# Render sets PORT automatically
+CMD ["/app/.venv/bin/uvicorn", "fastapi_app.main:app", "--host", "0.0.0.0", "--port", "10000"]
