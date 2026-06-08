@@ -25,14 +25,14 @@ HOW TO RUN (CLI / POWERSHELL)
 Invoke-RestMethod -Uri "http://127.0.0.1:8000/predict" `
     -Method POST `
     -ContentType "application/json" `
-    -Body '{"datetime_val":"2026-05-06T15:30:00Z","init_latlon":[1.3, 103.8],"dest_latlon":[1.35, 103.9],"category_id":"c59c0d90-d940-4f0c-a29a-c48c0bf6d9f9"}'
+    -Body '{"datetime_val":"2026-05-06T15:30:00Z","init_latlon":[1.3, 103.8],"dest_latlon":[1.35, 103.9],"category_id":"3a63ba2d-7b65-4733-b028-29a11f39e560"}'
 
 ----------------------------------------------------------------------
 
 Invoke-RestMethod -Uri "http://127.0.0.1:8000/feedback" `
     -Method POST `
     -ContentType "application/json" `
-    -Body '{"meeting_location": "Bukit Panjang Plaza", "meeting_datetime":"2026-05-06T15:30:00Z","init_latlon":[1.3, 103.8],"meeting_latlon":[1.35, 103.9],"category_id":"c59c0d90-d940-4f0c-a29a-c48c0bf6d9f9","pred_min":19,"arrived_datetime":"2026-05-06T18:30:00Z"}'
+    -Body '{"meeting_location": "Bukit Panjang Plaza", "meeting_datetime":"2026-05-06T15:30:00Z","init_latlon":[1.3, 103.8],"meeting_latlon":[1.35, 103.9],"category_id":"3a63ba2d-7b65-4733-b028-29a11f39e560","pred_min":19,"arrived_datetime":"2026-05-06T18:30:00Z"}'
 """
 from .core.fastapi_builder import create_fastapi_app
 from .core.request_schema import PredictRequest, FeedbackRequest
