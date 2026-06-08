@@ -41,8 +41,9 @@ TRAINED_MODELS_NAME: str = "trained_models.pkl"
 ONEHOT_ENCODE_COLS_NAME: str = "onehot_columns.pkl"
 
 # Configuration Parameters
-FEATURE_REGISTRY_ID_VAL: str = "6b13485d-8e53-4a23-a306-604d2abb9622"
-MODEL_REGISTRY_ID_VAL: str = "b5911277-75eb-40b2-a1ce-d263e3000d53"
+#TODO Find Feature or Model Registry cannot be found, revert back to the last created versions
+FEATURE_REGISTRY_ID_VAL: str = "e3dd644e-a400-485a-8084-e154c3c247c4"
+MODEL_REGISTRY_ID_VAL: str = "1f9b814e-5b13-4bdf-9dbc-6dfff0798ba0"
 ENSEMBLE_NUM: int = 2
 ENSEMBLE_RANKING_METRIC: str = "mse"
 ENSEMBLE_STRATEGY: str = "mean"
