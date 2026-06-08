@@ -21,4 +21,4 @@ ENV PYTHONPATH=/app/src
 EXPOSE 10000
 
 # Run FastAPI
-CMD ["/app/.venv/bin/uvicorn", "fastapi_app.main:app", "--host", "0.0.0.0", "--port", "10000"]
+CMD ["uvicorn", "fastapi_app.main:app", "--host", "0.0.0.0", "--port", "10000"]
